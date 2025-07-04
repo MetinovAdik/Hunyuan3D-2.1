@@ -109,7 +109,8 @@ wget https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_
 
 We designed a diffusers-like API to use our shape generation model - Hunyuan3D-Shape and texture synthesis model -
 Hunyuan3D-Paint.
-
+#### Standard Installation (Inference)
+This is the recommended setup for running inference with our provided models and Gradio app.
 ```python
 import sys
 sys.path.insert(0, './hy3dshape')
@@ -126,7 +127,12 @@ paint_pipeline = Hunyuan3DPaintPipeline(Hunyuan3DPaintConfig(max_num_view=6, res
 mesh_textured = paint_pipeline(mesh_path, image_path='assets/demo.png')
 ```
 
-
+### Optional Installation (For Training)
+The deepspeed library is used for training optimization. It is not required for inference. If you plan to train the model, install it separately. Note: deepspeed installation can be complex and may require custom steps depending on your OS.
+Generated bash
+```python
+pip install deepspeed
+```
 ### Gradio App
 
 You could also host a [Gradio](https://www.gradio.app/) App in your own computer via:
